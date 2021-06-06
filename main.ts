@@ -210,7 +210,13 @@ enemy()
 ball()
 effects.blizzard.startScreenEffect()
 game.onUpdate(function () {
-	
+    if (projectile.x > scene.screenWidth() / 2) {
+        if (projectile.y > mySprite2.y) {
+            mySprite2.y += 2
+        } else {
+            mySprite2.y += -2
+        }
+    }
 })
 forever(function () {
     theme_music()
