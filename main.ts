@@ -1,3 +1,11 @@
+info.onCountdownEnd(function () {
+    if (info.player1.score() >= info.player2.score()) {
+        game.over(false, effects.splatter)
+    } else {
+        game.over(true, effects.melt)
+    }
+    info.setScore(info.highScore())
+})
 function theme_music () {
     music.playTone(208, music.beat(BeatFraction.Whole))
     music.playTone(247, music.beat(BeatFraction.Whole))
@@ -199,7 +207,7 @@ function ball () {
         . . . . . . . 1 1 1 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Projectile)
-    projectile.setVelocity(50, 50)
+    projectile.setVelocity(77, 77)
     projectile.setBounceOnWall(true)
 }
 let projectile: Sprite = null
@@ -209,6 +217,7 @@ player2()
 enemy()
 ball()
 effects.blizzard.startScreenEffect()
+info.startCountdown(150)
 game.onUpdate(function () {
     if (projectile.x > scene.screenWidth() / 2) {
         if (projectile.y > mySprite2.y) {
