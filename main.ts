@@ -1,10 +1,5 @@
 info.onCountdownEnd(function () {
-    if (info.player1.score() >= info.player2.score()) {
-        game.over(false, effects.splatter)
-    } else {
-        game.over(true, effects.melt)
-    }
-    info.setScore(info.highScore())
+    game.reset()
 })
 function theme_music () {
     music.playTone(208, music.beat(BeatFraction.Whole))
@@ -104,8 +99,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     otherSprite.vx = 0 - otherSprite.vx
     if (sprite == mySprite2) {
         info.changeScoreBy(1)
+        info.startCountdown(3)
         otherSprite.right = sprite.left
     } else {
+        info.startCountdown(5)
         info.player2.changeScoreBy(1)
         otherSprite.left = sprite.right
     }
@@ -207,7 +204,7 @@ function ball () {
         . . . . . . . 1 1 1 . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Projectile)
-    projectile.setVelocity(77, 77)
+    projectile.setVelocity(82, 82)
     projectile.setBounceOnWall(true)
 }
 let projectile: Sprite = null
@@ -217,7 +214,7 @@ player2()
 enemy()
 ball()
 effects.blizzard.startScreenEffect()
-info.startCountdown(90)
+info.startCountdown(6)
 game.onUpdate(function () {
     if (projectile.x > scene.screenWidth() / 2) {
         if (projectile.y > mySprite2.y) {
@@ -225,6 +222,13 @@ game.onUpdate(function () {
         } else {
             mySprite2.y += -2
         }
+    }
+})
+game.onUpdate(function () {
+    if (info.player1.score() > 30) {
+        game.over(false)
+    } else if (info.player2.score() == 30) {
+        game.over(true, effects.dissolve)
     }
 })
 forever(function () {
