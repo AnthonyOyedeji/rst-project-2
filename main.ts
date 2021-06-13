@@ -217,7 +217,7 @@ player2()
 enemy()
 ball()
 effects.blizzard.startScreenEffect()
-info.startCountdown(150)
+info.startCountdown(90)
 game.onUpdate(function () {
     if (projectile.x > scene.screenWidth() / 2) {
         if (projectile.y > mySprite2.y) {
