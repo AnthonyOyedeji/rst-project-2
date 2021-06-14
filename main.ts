@@ -225,9 +225,9 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
-    if (info.player1.score() > 30) {
+    if (info.player1.score() > 20) {
         game.over(false)
-    } else if (info.player2.score() == 30) {
+    } else if (info.player2.score() == 20) {
         game.over(true, effects.dissolve)
     }
 })
