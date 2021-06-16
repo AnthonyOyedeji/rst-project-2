@@ -99,7 +99,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     otherSprite.vx = 0 - otherSprite.vx
     if (sprite == mySprite2) {
         info.changeScoreBy(1)
-        info.startCountdown(3)
+        info.startCountdown(4)
         otherSprite.right = sprite.left
     } else {
         info.startCountdown(5)
@@ -215,6 +215,7 @@ enemy()
 ball()
 effects.blizzard.startScreenEffect()
 info.startCountdown(6)
+info.player2.setScore(-1)
 game.onUpdate(function () {
     if (projectile.x > scene.screenWidth() / 2) {
         if (projectile.y > mySprite2.y) {
@@ -225,9 +226,9 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
-    if (info.player1.score() > 20) {
+    if (info.player1.score() > 15) {
         game.over(false)
-    } else if (info.player2.score() == 20) {
+    } else if (info.player2.score() == 15) {
         game.over(true, effects.dissolve)
     }
 })
