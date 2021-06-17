@@ -1,46 +1,48 @@
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    mySprite,
-    [img`
-        . . . 2 . . . 
-        . . 2 4 2 . . 
-        . 2 4 5 4 2 . 
-        2 4 5 5 5 4 2 
-        2 2 4 4 4 2 2 
-        2 . 2 2 2 . 2 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        . . 2 2 2 . . 
-        `],
-    500,
-    true
-    )
+    if (info.player2.score() == 10) {
+        animation.runImageAnimation(
+        mySprite,
+        [img`
+            . . . 2 . . . 
+            . . 2 4 2 . . 
+            . 2 4 5 4 2 . 
+            2 4 5 5 5 4 2 
+            2 2 4 4 4 2 2 
+            2 . 2 2 2 . 2 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            . . 2 2 2 . . 
+            `],
+        500,
+        true
+        )
+    }
 })
 function level (level_number: Sprite) {
 	
@@ -193,7 +195,7 @@ function enemy () {
     mySprite2.x = 160
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (true) {
+    if (info.player2.score() == 10) {
         animation.runImageAnimation(
         mySprite,
         [img`
