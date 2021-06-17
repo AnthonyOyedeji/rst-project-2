@@ -1,3 +1,6 @@
+function level (level_number: Sprite) {
+	
+}
 info.onCountdownEnd(function () {
     game.reset()
 })
@@ -142,7 +145,6 @@ function enemy () {
         8888............
         8888............
         `, SpriteKind.Player)
-    controller.player2.moveSprite(mySprite2)
     mySprite2.setStayInScreen(true)
     mySprite2.x = 160
 }
@@ -181,7 +183,7 @@ function player2 () {
         2222............
         2222............
         `, SpriteKind.Player)
-    controller.moveSprite(mySprite, 70, 70)
+    controller.moveSprite(mySprite, controller.player2.dy(), 77)
     mySprite.setStayInScreen(true)
     mySprite.x = 20
 }
@@ -214,8 +216,10 @@ player2()
 enemy()
 ball()
 effects.blizzard.startScreenEffect()
+game.showLongText("Reach 15 score points before your enemy reaches 17", DialogLayout.Bottom)
+let current_level = 1
 info.startCountdown(6)
-info.player2.setScore(-1)
+info.player1.setScore(-1)
 game.onUpdate(function () {
     if (projectile.x > scene.screenWidth() / 2) {
         if (projectile.y > mySprite2.y) {
@@ -226,11 +230,14 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
-    if (info.player1.score() > 15) {
+    if (info.player1.score() > 16) {
         game.over(false)
     } else if (info.player2.score() == 15) {
-        game.over(true, effects.dissolve)
+        game.over(true, effects.melt)
     }
+})
+game.onUpdate(function () {
+	
 })
 forever(function () {
     theme_music()
